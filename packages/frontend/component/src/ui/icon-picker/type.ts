@@ -16,5 +16,5 @@ export type IconData =
     }
   | {
       type: IconType.Blob;
-      blob: Blob;
+      source: string; // data URL (data:image/jpeg;base64,...)
     };

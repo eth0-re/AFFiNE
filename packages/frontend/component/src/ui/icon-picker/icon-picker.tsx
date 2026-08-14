@@ -6,12 +6,14 @@ import { Button } from '../button';
 import { RadioGroup, type RadioItem } from '../radio';
 import * as styles from './icon-picker.css';
 import { AffineIconPicker } from './picker/affine-icon/affine-icon-picker';
+import { CustomIconPicker } from './picker/custom/custom-icon-picker';
 import { EmojiPicker } from './picker/emoji/emoji-picker';
 import { type IconData, IconType } from './type';
 
 const panels: Array<RadioItem> = [
   { value: 'Emoji', className: styles.headerNavItem },
   { value: 'Icons', className: styles.headerNavItem },
+  { value: 'Custom', className: styles.headerNavItem },
 ];
 
 export const IconPicker = ({
@@ -65,6 +67,12 @@ export const IconPicker = ({
           <AffineIconPicker
             onSelect={(icon, color) => {
               onSelect?.({ type: IconType.AffineIcon, name: icon, color });
+            }}
+          />
+        ) : activePanel === 'Custom' ? (
+          <CustomIconPicker
+            onSelect={dataUrl => {
+              onSelect?.({ type: IconType.Blob, source: dataUrl });
             }}
           />
         ) : null}

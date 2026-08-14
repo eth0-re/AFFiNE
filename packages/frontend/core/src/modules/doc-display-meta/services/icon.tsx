@@ -22,6 +22,13 @@ export const getDocIconComponentLit = (icon: IconData) => {
         ${litIcons[`${icon.name}Icon` as keyof typeof litIcons]()}
       </div>`;
     }
+    if (icon.type === IconType.Blob && icon.source) {
+      return html`<img
+        src=${icon.source}
+        alt="Custom icon"
+        style="width: 1em; height: 1em; object-fit: cover; border-radius: 6px; display: inline-block; vertical-align: middle; image-rendering: auto;"
+      />`;
+    }
     return null;
   };
 };
